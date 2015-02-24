@@ -1,0 +1,5 @@
+.idea/
+.ipynb_checkpoints/
+*.pyc
+static/bower_components/
+unversioned/

@@ -1,0 +1,29 @@
+.post {
+    margin-bottom: 30px;
+}
+
+.blog-title a {
+    color: #333;
+}
+
+.remove-button{
+  float: right;
+  display: none;
+  cursor: pointer;
+}
+.post-title .remove-link{
+  color: black;
+}
+
+.post:hover .remove-button{
+  display: block;
+}
+
+.host-url {
+  font-size: 10pt;
+  margin-right: 5px;
+}
+
+._selectize-form{
+  width: 200px;
+}

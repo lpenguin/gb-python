@@ -1,0 +1,50 @@
+!!!
+html
+  head
+    title= title
+    link(href="/bower_components/ionicons/css/ionicons.css" rel="stylesheet")
+    link(href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet")
+    link(href="/bower_components/selectize/dist/css/selectize.css" rel="stylesheet")
+    link(href="/bower_components/selectize/dist/css/selectize.bootstrap3.css" rel="stylesheet")
+    link(href="/css/geekbm.css" rel="stylesheet")
+  body
+    .container
+      nav.navbar.navbar-default.col-sm-8(role="navigation")
+        .container-fluid
+          .navbar-header
+            a.navbar-brand(href="/") Geekbookmarks
+          .collapse.navbar-collapse
+            form.navbar-form.navbar-left(role="search" action="/search" method="get")
+              .form-group._selectize-form
+                input(type="text" placeholder="Search" name="search" value="#{search}" id="search")
+              button.btn.btn-default(type="submit") Submit
+
+      .row
+        .col-sm-8
+          -for(item <- items)
+              .post
+                h4.post-title
+                  a(href="#{item.url}")
+                    -if(!item.faviconUrl.isEmpty)
+                      img(src="#{item.faviconUrl}")
+                    =item.name
+                  a.remove-link(href="/records/remove/#{item.id}")
+                    i.ion-close-round.remove-button
+
+                p.post-meta
+                  =item.addedAt
+                  a.text-muted.host-url(href="http://#{item.host()}")
+                    i.glyphicon.glyphicon-link
+                    =item.host()
+
+                  -for(tag <- item.tags)
+                    a.badge(href="/tags/#{tag}") =tag
+
+                p.post-meta =item.description
+
+                hr
+
+    script(src="https://code.jquery.com/jquery-2.1.1.min.js")
+    script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
+    script(src="/bower_components/selectize/dist/js/standalone/selectize.min.js")
+    script(src="js/index.js")
